@@ -7,6 +7,8 @@ public class Movement : MonoBehaviour
     [SerializeField] InputAction rotation;
     [SerializeField] private float thrustForce = 1000f;
     [SerializeField] private float rotationForce = 100f;
+    [SerializeField] AudioClip mainEngine;
+
     AudioSource audioSource;
     Rigidbody rb;
 
@@ -33,13 +35,16 @@ private void ProcessThrust()
     if (thrust.IsPressed())
     {
         rb.AddRelativeForce(Vector3.up * thrustForce * Time.fixedDeltaTime);
-            if (!audioSource.isPlaying) 
-            audioSource.Play();       
+            if (!audioSource.isPlaying)
+            {
+               audioSource.PlayOneShot(mainEngine);   
+            } 
+                 
     }
             else
-        {
-            audioSource.Stop();
-        }
+            {
+               audioSource.Stop();
+            }
  }
 
  private void ProcessRotation()
