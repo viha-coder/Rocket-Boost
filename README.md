@@ -24,3 +24,36 @@ My second Unity project, using C# — a rocket landing game focused on thrust, r
 
 - Learned that imported assets (like models from the Asset Store or other sources) come as prefabs that shouldn't be edited directly, since changes could break if the asset is updated or re-imported.
 - To customize an imported prefab safely, the correct approach is creating a "Prefab Variant" (a prefab of the prefab) — this preserves the original asset while allowing custom overrides.
+
+### Physics
+
+- Configured the Rigidbody's **Linear Damping** to control the rocket's deceleration.
+- Adjusted Unity's default gravity from **-9.81** to **-4** to better fit the game's physics and improve the overall gameplay feel.
+
+### Audio
+
+- Learned how to use the **AudioSource** component.
+- Controlled the rocket's thrust sound through code.
+- Solved an issue where the engine sound kept starting and stopping while the thrust key was held by checking `audioSource.isPlaying` before calling `Play()`.
+
+### Tools
+
+- Learned how to use **OBS Studio** to record gameplay footage for GitHub documentation and LinkedIn posts.
+
+---
+
+## Problem Solved
+
+### Engine sound repeatedly starting and stopping
+
+**Issue**
+
+While holding the thrust key, the engine sound kept starting and stopping every frame.
+
+**Cause**
+
+Both `Play()` and `Stop()` were being executed within the same input condition. Since `Update()` runs every frame, the audio continuously alternated between playing and stopping.
+
+**Solution**
+
+I used `audioSource.isPlaying` to ensure the audio only starts when it isn't already playing, and moved `Stop()` to execute only when the thrust key is released.
