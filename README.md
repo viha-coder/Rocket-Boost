@@ -52,6 +52,8 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 
 - Learned that imported assets (like models from the Asset Store or other sources) come as prefabs that shouldn't be edited directly, since changes could break if the asset is updated or re-imported.
 - To customize an imported prefab safely, the correct approach is creating a "Prefab Variant" (a prefab of the prefab) — this preserves the original asset while allowing custom overrides.
+- I learned that changes made to one prefab instance are not automatically applied to every scene.
+- To fix this, I applied the changes to the original prefab so that all instances across the project received the updated configuration.
 
 ### Physics
 
@@ -63,6 +65,8 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 - Learned how to use the **AudioSource** component.
 - Controlled the rocket's thrust sound through code.
 - Solved an issue where the engine sound kept starting and stopping while the thrust key was held by checking `audioSource.isPlaying` before calling `Play()`.
+- I learned how to use `AudioSource.PlayOneShot()` to play different sound effects for crashes and successful landings.
+- I also stopped the rocket engine sound before playing the collision sound effect.
 
 ### Tools
 
@@ -70,10 +74,8 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 
 ### Collision Handling
 
-I learned how to use `OnCollisionEnter()` to detect collisions and respond differently depending on the tag of the object.
-
-I used a `switch` statement to organize the collision logic:
-
+- I learned how to use `OnCollisionEnter()` to detect collisions and respond differently depending on the tag of the object.
+- I used a `switch` statement to organize the collision logic:
 - `Friendly` objects allow the rocket to continue.
 - `Finish` objects trigger the success sequence.
 - Any other object triggers the crash sequence.
@@ -88,30 +90,17 @@ I learned how to:
 - reload the current scene;
 - return to the first scene after the final level.
 
-### Audio
-
-I learned how to use `AudioSource.PlayOneShot()` to play different sound effects for crashes and successful landings.
-
-I also stopped the rocket engine sound before playing the collision sound effect.
-
 ### Particle Systems
 
 I added separate particle effects for:
 
 - successful landings;
 - crashes.
-
-These effects are triggered through code when the corresponding collision sequence starts.
+- These effects are triggered through code when the corresponding collision sequence starts.
 
 ### Delayed Method Calls
 
 I learned how to use `Invoke()` to delay scene transitions, allowing the player to see and hear the crash or success effects before the scene changes.
-
-### Prefabs
-
-I learned that changes made to one prefab instance are not automatically applied to every scene.
-
-To fix this, I applied the changes to the original prefab so that all instances across the project received the updated configuration.
 
 ---
 
@@ -195,7 +184,7 @@ This helped me understand the difference between editing a prefab instance and a
 
 ---
 
-## 🎮 Current Game Structure
+## Current Game Structure
 
 The game currently contains three playable levels.
 
