@@ -9,11 +9,10 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 ### New Features
 
 - Added collision-based sound effects using `OnCollisionEnter()`.
-- Learned and implemented a `switch` statement to handle different collision tags.
+- Implemented collision handling with a `switch` statement for different tags.
 - Added two new scenes, bringing the game to a total of three levels.
 - Added particle effects for successful landings and crashes.
-- Added a delay before reloading the current level after a crash.
-- Added a delay before loading the next level after a successful landing.
+- Added configurable delays before reloading the current level or loading the next one.
 - Implemented automatic scene progression using the current scene's build index.
 - Added logic to return to the first level after completing the final scene.
 
@@ -32,7 +31,7 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 
 ## Things I've Learned
 
-### New Unity Input System:
+### New Unity Input System
 
 - Learned to use Unity's new Input System package instead of the old `Input.GetAxis()` approach.
 - Created a `Movement` script using `InputAction` fields for thrust (button-style, read with `.IsPressed()`) and rotation (axis-style, read with `.ReadValue<float>()`).
@@ -51,7 +50,7 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 - Used `Rigidbody.AddRelativeForce()` for physics-based thrust.
 - This was a gameplay-oriented choice for the project: rotation is controlled directly, while thrust, gravity, and collisions are handled through the Rigidbody.
 
-### Imported Assets and Prefabs
+### Prefabs and Prefab Instances
 
 - Learned the difference between a prefab asset and a prefab instance.
 - Learned how applying instance overrides to the original prefab updates its other instances across the project.
@@ -105,7 +104,7 @@ These effects are triggered through code when the corresponding collision sequen
 
 ---
 
-##  Problems Solved
+## Problems Solved
 
 ### Engine sound repeatedly starting and stopping
 
@@ -197,7 +196,7 @@ The player must guide the rocket from the starting platform to the landing platf
 
 - Crashing reloads the current level.
 - Landing successfully loads the next level.
-- Completing the final level returns the player to the first scene.
+- Completing the final level returns the player to the first level.
 
 The scene flow is controlled using each scene's `buildIndex`.
 
