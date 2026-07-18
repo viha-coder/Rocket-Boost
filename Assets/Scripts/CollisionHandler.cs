@@ -48,7 +48,7 @@ public class CollisionHandler : MonoBehaviour
         audioSource.PlayOneShot(SuccessSFX);
         successParticles.Play();
         StopMovement();
-        Invoke("LoadNextLevel", levelLoadDelay);
+        Invoke(nameof(LoadNextLevel), levelLoadDelay);
     }
 
     void StartCrashSequence()
@@ -58,7 +58,7 @@ public class CollisionHandler : MonoBehaviour
         audioSource.PlayOneShot(CrashSFX);
         crashParticles.Play();
         StopMovement();
-        Invoke("ReloadLevel", levelLoadDelay); 
+        Invoke(nameof(ReloadLevel), levelLoadDelay); 
     }   
 
     void LoadNextLevel()

@@ -34,7 +34,7 @@ private void ProcessThrust()
  {
     if (thrust.IsPressed())
     {
-        rb.AddRelativeForce(Vector3.up * thrustForce * Time.fixedDeltaTime);
+        rb.AddRelativeForce(Vector3.up * thrustForce);
             if (!audioSource.isPlaying)
             {
                audioSource.PlayOneShot(mainEngine);   

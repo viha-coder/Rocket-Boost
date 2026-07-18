@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 16
+  controlID: 99
   draggingID: 0
 --- !u!114 &3
 MonoBehaviour:
@@ -686,10 +686,11 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: []
+    m_SelectedInstanceIDs:
+    - m_rawData: 568105589213756054
     m_LastClickedEntityId:
-      m_rawData: 0
-    m_HadKeyboardFocusLastEvent: 1
+      m_rawData: 568105589213756054
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs:
     - m_rawData: 568105584918842704
     - m_rawData: 568105584918842686
@@ -820,9 +821,10 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: []
+      m_SelectedIDs:
+      - m_rawData: 568105589213756054
       m_LastClickedID:
-        m_rawData: 0
+        m_rawData: 568105589213756054
       m_ExpandedIDs:
       - m_rawData: 568105589213756066
       m_RenameOverlay:
@@ -1364,9 +1366,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -8.023324, y: 1.8880571, z: -0.14005142}
+    m_Target: {x: -7.7452526, y: 1.7606579, z: -0.2621846}
     speed: 2
-    m_Value: {x: -8.023324, y: 1.8880571, z: -0.14005142}
+    m_Value: {x: -7.7452526, y: 1.7606579, z: -0.2621846}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1415,11 +1417,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.08890935, y: -0.16710897, z: 0.015131242, w: -0.98181456}
     speed: 2
-    m_Value: {x: -0.0889085, y: -0.16710737, z: 0.015131097, w: -0.9818052}
+    m_Value: {x: -0.08890935, y: -0.16710895, z: 0.015131241, w: -0.98181456}
   m_Size:
-    m_Target: 4.3992047
+    m_Target: 3.3372936
     speed: 2
-    m_Value: 4.3992047
+    m_Value: 3.3372936
   m_Ortho:
     m_Target: 0
     speed: 2
