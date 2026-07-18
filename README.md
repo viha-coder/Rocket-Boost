@@ -1,6 +1,6 @@
 # Rocket Boost
 
-My second Unity project, using C# — a rocket landing game focused on thrust, rotation and physics-based movement.
+My second Unity project, built with C# — a rocket-landing game focused on thrust, rotation, and physics-based movement.
 
 ## Development Update — July 17, 2026
 
@@ -8,7 +8,7 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 
 ### New Features
 
-- Added collision-based sound effects using `OnCollisionEnter()`.
+- Added crash and success sound effects triggered by collisions detected with `OnCollisionEnter()`.
 - Implemented collision handling with a `switch` statement for different tags.
 - Added two new scenes, bringing the game to a total of three levels.
 - Added particle effects for successful landings and crashes.
@@ -25,7 +25,7 @@ In this stage of the project, I expanded the game by adding new levels, visual e
   - loading the next level;
   - reloading the current level.
 - Used a boolean variable to prevent the collision logic from running multiple times.
-- Improved code readability by separating responsibilities into smaller methods.
+- Kept `OnCollisionEnter()` focused on selecting the correct sequence, while separate methods handle movement, effects, and scene transitions.
 
 ---
 
