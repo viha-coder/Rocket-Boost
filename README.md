@@ -14,7 +14,7 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 - Added particle effects for successful landings and crashes.
 - Added configurable delays before reloading the current level or loading the next one.
 - Implemented automatic scene progression using the current scene's build index.
-- Added logic to return to the first level after completing the final scene.
+- Added logic to return to the first level after completing the final level.
 
 ### Code Organization
 
@@ -87,16 +87,13 @@ I learned how to:
 - access the scene's `buildIndex`;
 - calculate the next scene;
 - reload the current scene;
-- return to the first level after the final level.
+- return to the first level after completing the final level.
 
 ### Particle Systems
 
-I added separate particle effects for:
-
-- successful landings;
-- crashes.
-
-These effects are triggered through code when the corresponding collision sequence starts.
+- Learned how to trigger separate particle systems through code for:
+  - successful landings;
+  - crashes.
 
 ### Delayed Method Calls
 
@@ -114,7 +111,7 @@ While holding the thrust key, the engine sound kept starting and stopping every 
 
 **Cause**
 
-Both `Play()` and `Stop()` were being executed within the same input condition. Since `Update()` runs every frame, the audio continuously alternated between playing and stopping.
+Both `Play()` and `Stop()` were being executed within the same input condition. Because this condition was evaluated repeatedly while the thrust key was held, the audio continuously alternated between playing and stopping.
 
 **Solution**
 
