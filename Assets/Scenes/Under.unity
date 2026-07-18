@@ -801,7 +801,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2238967427965276803, guid: eb318e8d4e4487d459a809bc318eff91, type: 3}
       propertyPath: thrustForce
-      value: 1000
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2513183498833817730, guid: eb318e8d4e4487d459a809bc318eff91, type: 3}
       propertyPath: m_Name
