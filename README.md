@@ -2,7 +2,7 @@
 
 My second Unity project, using C# — a rocket landing game focused on thrust, rotation and physics-based movement.
 
-## Latest Progress (07/17/26):
+## Development Update — July 17, 2026
 
 In this stage of the project, I expanded the game by adding new levels, visual effects, sound effects, scene transitions, and improved collision handling.
 
@@ -30,7 +30,7 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 
 ---
 
-## Things I've Learned:
+## Things I've Learned
 
 ### New Unity Input System:
 
@@ -38,22 +38,23 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 - Created a `Movement` script using `InputAction` fields for thrust (button-style, read with `.IsPressed()`) and rotation (axis-style, read with `.ReadValue<float>()`).
 - Learned to call `.Enable()` on each `InputAction` inside `OnEnable()`, so input starts working as soon as the object becomes active.
 
-### Tuning Variables and Framerate Independence:
+### Tuning Variables and Physics Updates
 
-- Added `[SerializeField]` tuning variables (`thrustForce`, `rotationForce`) to test and adjust values directly in the Inspector, instead of hardcoding numbers.
-- Multiplied force and rotation by `Time.fixedDeltaTime` inside `FixedUpdate()`, keeping physics calculations consistent regardless of frame rate.
+- Added `[SerializeField]` tuning variables (`thrustForce` and `rotationForce`) to adjust gameplay values directly in the Inspector instead of hardcoding numbers.
+- Handled thrust and rotation inside `FixedUpdate()` so that movement stays synchronized with Unity's physics updates.
+- Multiplied the direct rotation amount by `Time.fixedDeltaTime` so that `rotationForce` represents rotation speed over time.
+- Applied thrust through `Rigidbody.AddRelativeForce()`.
 
-### Mixing transform.Rotate() with Rigidbody:
+### Combining `transform.Rotate()` with `Rigidbody`
 
-- Used `transform.Rotate()` to control the rocket's rotation on a single axis (Z), while still using `Rigidbody.AddRelativeForce()` for thrust.
-- Understood why this combination works fine here: rotation is purely visual/directional in this game, since nothing needs to physically react to the rocket spinning (unlike a spinning obstacle that needs to push a player on collision).
+- Used `transform.Rotate()` to provide direct and responsive control over the rocket's orientation on the Z axis.
+- Used `Rigidbody.AddRelativeForce()` for physics-based thrust.
+- This was a gameplay-oriented choice for the project: rotation is controlled directly, while thrust, gravity, and collisions are handled through the Rigidbody.
 
-### Imported Assets and Prefabs:
+### Imported Assets and Prefabs
 
-- Learned that imported assets (like models from the Asset Store or other sources) come as prefabs that shouldn't be edited directly, since changes could break if the asset is updated or re-imported.
-- To customize an imported prefab safely, the correct approach is creating a "Prefab Variant" (a prefab of the prefab) — this preserves the original asset while allowing custom overrides.
-- I learned that changes made to one prefab instance are not automatically applied to every scene.
-- To fix this, I applied the changes to the original prefab so that all instances across the project received the updated configuration.
+- Learned the difference between a prefab asset and a prefab instance.
+- Learned how applying instance overrides to the original prefab updates its other instances across the project.
 
 ### Physics
 
@@ -62,23 +63,22 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 
 ### Audio
 
-- Learned how to use the **AudioSource** component.
-- Controlled the rocket's thrust sound through code.
-- Solved an issue where the engine sound kept starting and stopping while the thrust key was held by checking `audioSource.isPlaying` before calling `Play()`.
-- I learned how to use `AudioSource.PlayOneShot()` to play different sound effects for crashes and successful landings.
-- I also stopped the rocket engine sound before playing the collision sound effect.
-
+- Learned how to use the `AudioSource` component.
+- Controlled the rocket's engine sound through code.
+- Used `audioSource.isPlaying` to avoid restarting an audio clip that is already playing.
+- Used `AudioSource.PlayOneShot()` to play crash and success sound effects.
+  
 ### Tools
 
 - Learned how to use **OBS Studio** to record gameplay footage for GitHub documentation and LinkedIn posts.
 
 ### Collision Handling
 
-- I learned how to use `OnCollisionEnter()` to detect collisions and respond differently depending on the tag of the object.
-- I used a `switch` statement to organize the collision logic:
-- `Friendly` objects allow the rocket to continue.
-- `Finish` objects trigger the success sequence.
-- Any other object triggers the crash sequence.
+- Learned how to use `OnCollisionEnter()` to detect collisions and respond according to the collided object's tag.
+- Used a `switch` statement to organize the collision logic:
+  - `Friendly` allows the rocket to continue;
+  - `Finish` starts the success sequence;
+  - any other tag starts the crash sequence.
 
 ### Scene Management
 
@@ -88,7 +88,7 @@ I learned how to:
 - access the scene's `buildIndex`;
 - calculate the next scene;
 - reload the current scene;
-- return to the first scene after the final level.
+- return to the first level after the final level.
 
 ### Particle Systems
 
@@ -96,11 +96,12 @@ I added separate particle effects for:
 
 - successful landings;
 - crashes.
-- These effects are triggered through code when the corresponding collision sequence starts.
+
+These effects are triggered through code when the corresponding collision sequence starts.
 
 ### Delayed Method Calls
 
-I learned how to use `Invoke()` to delay scene transitions, allowing the player to see and hear the crash or success effects before the scene changes.
+- Learned how to use `Invoke()` to schedule a method call after a configurable delay.
 
 ---
 
@@ -118,7 +119,7 @@ Both `Play()` and `Stop()` were being executed within the same input condition. 
 
 **Solution**
 
-I used `audioSource.isPlaying` to ensure the audio only starts when it isn't already playing, and moved `Stop()` to execute only when the thrust key is released.+
+I used `audioSource.isPlaying` to ensure the audio only starts when it isn't already playing, and moved `Stop()` to execute only when the thrust key is released.
 
 ---
 
@@ -134,14 +135,15 @@ The movement input was disabled, but the currently playing engine audio was not 
 
 **Solution**
 
-I called:
+I stopped the engine audio before playing the crash or success sound effect:
 
 ```csharp
-audioSource.Stop(); before playing the crash or success sound effect.
+audioSource.Stop();
+```
 
 ---
 
-### Scene changed too quickly after a collision
+### Scene transition happened too quickly after a collision
 
 **Issue**
 
@@ -156,13 +158,16 @@ The scene transition happened as soon as the collision sequence started.
 I used `Invoke()` with a configurable delay:
 
 ```csharp
-Invoke("ReloadLevel", levelLoadDelay); and:
-
-```csharp
-Invoke("LoadNextLevel", levelLoadDelay);
+Invoke(nameof(ReloadLevel), levelLoadDelay);
 ```
 
-This gives the sound and particle effects time to play before changing scenes.
+and:
+
+```csharp
+Invoke(nameof(LoadNextLevel), levelLoadDelay);
+```
+
+This gives the sound and particle effects time to play before the scene changes.
 
 ---
 
