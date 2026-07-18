@@ -2,7 +2,35 @@
 
 My second Unity project, using C# — a rocket landing game focused on thrust, rotation and physics-based movement.
 
-## Things I've Learned:
+## Development Update — July 17, 2026
+
+In this stage of the project, I expanded the game by adding new levels, visual effects, sound effects, scene transitions, and improved collision handling.
+
+### New Features
+
+- Added collision-based sound effects using `OnCollisionEnter()`.
+- Learned and implemented a `switch` statement to handle different collision tags.
+- Added two new scenes, bringing the game to a total of three levels.
+- Added particle effects for successful landings and crashes.
+- Added a delay before reloading the current level after a crash.
+- Added a delay before loading the next level after a successful landing.
+- Implemented automatic scene progression using the current scene's build index.
+- Added logic to return to the first level after completing the final scene.
+
+### Code Organization
+
+- Created separate methods for:
+  - stopping player movement;
+  - handling the success sequence;
+  - handling the crash sequence;
+  - loading the next level;
+  - reloading the current level.
+- Used a boolean variable to prevent the collision logic from running multiple times.
+- Improved code readability by separating responsibilities into smaller methods.
+
+---
+
+## Things I've Learned
 
 ### New Unity Input System:
 
@@ -10,20 +38,23 @@ My second Unity project, using C# — a rocket landing game focused on thrust, r
 - Created a `Movement` script using `InputAction` fields for thrust (button-style, read with `.IsPressed()`) and rotation (axis-style, read with `.ReadValue<float>()`).
 - Learned to call `.Enable()` on each `InputAction` inside `OnEnable()`, so input starts working as soon as the object becomes active.
 
-### Tuning Variables and Framerate Independence:
+### Tuning Variables and Physics Updates
 
-- Added `[SerializeField]` tuning variables (`thrustForce`, `rotationForce`) to test and adjust values directly in the Inspector, instead of hardcoding numbers.
-- Multiplied force and rotation by `Time.fixedDeltaTime` inside `FixedUpdate()`, keeping physics calculations consistent regardless of frame rate.
+- Added `[SerializeField]` tuning variables (`thrustForce` and `rotationForce`) to adjust gameplay values directly in the Inspector instead of hardcoding numbers.
+- Handled thrust and rotation inside `FixedUpdate()` so that movement stays synchronized with Unity's physics updates.
+- Multiplied the direct rotation amount by `Time.fixedDeltaTime` so that `rotationForce` represents rotation speed over time.
+- Applied thrust through `Rigidbody.AddRelativeForce()`.
 
-### Mixing transform.Rotate() with Rigidbody:
+### Combining `transform.Rotate()` with `Rigidbody`
 
-- Used `transform.Rotate()` to control the rocket's rotation on a single axis (Z), while still using `Rigidbody.AddRelativeForce()` for thrust.
-- Understood why this combination works fine here: rotation is purely visual/directional in this game, since nothing needs to physically react to the rocket spinning (unlike a spinning obstacle that needs to push a player on collision).
+- Used `transform.Rotate()` to provide direct and responsive control over the rocket's orientation on the Z axis.
+- Used `Rigidbody.AddRelativeForce()` for physics-based thrust.
+- This was a gameplay-oriented choice for the project: rotation is controlled directly, while thrust, gravity, and collisions are handled through the Rigidbody.
 
-### Imported Assets and Prefabs:
+### Imported Assets and Prefabs
 
-- Learned that imported assets (like models from the Asset Store or other sources) come as prefabs that shouldn't be edited directly, since changes could break if the asset is updated or re-imported.
-- To customize an imported prefab safely, the correct approach is creating a "Prefab Variant" (a prefab of the prefab) — this preserves the original asset while allowing custom overrides.
+- Learned the difference between a prefab asset and a prefab instance.
+- Learned how applying instance overrides to the original prefab updates its other instances across the project.
 
 ### Physics
 
@@ -32,17 +63,49 @@ My second Unity project, using C# — a rocket landing game focused on thrust, r
 
 ### Audio
 
-- Learned how to use the **AudioSource** component.
-- Controlled the rocket's thrust sound through code.
-- Solved an issue where the engine sound kept starting and stopping while the thrust key was held by checking `audioSource.isPlaying` before calling `Play()`.
-
+- Learned how to use the `AudioSource` component.
+- Controlled the rocket's engine sound through code.
+- Used `audioSource.isPlaying` to avoid restarting an audio clip that is already playing.
+- Used `AudioSource.PlayOneShot()` to play crash and success sound effects.
+  
 ### Tools
 
 - Learned how to use **OBS Studio** to record gameplay footage for GitHub documentation and LinkedIn posts.
 
+### Collision Handling
+
+- Learned how to use `OnCollisionEnter()` to detect collisions and respond according to the collided object's tag.
+- Used a `switch` statement to organize the collision logic:
+  - `Friendly` allows the rocket to continue;
+  - `Finish` starts the success sequence;
+  - any other tag starts the crash sequence.
+
+### Scene Management
+
+I learned how to:
+
+- get the current scene using `SceneManager.GetActiveScene()`;
+- access the scene's `buildIndex`;
+- calculate the next scene;
+- reload the current scene;
+- return to the first level after the final level.
+
+### Particle Systems
+
+I added separate particle effects for:
+
+- successful landings;
+- crashes.
+
+These effects are triggered through code when the corresponding collision sequence starts.
+
+### Delayed Method Calls
+
+- Learned how to use `Invoke()` to schedule a method call after a configurable delay.
+
 ---
 
-## Problem Solved
+##  Problems Solved
 
 ### Engine sound repeatedly starting and stopping
 
@@ -57,3 +120,102 @@ Both `Play()` and `Stop()` were being executed within the same input condition. 
 **Solution**
 
 I used `audioSource.isPlaying` to ensure the audio only starts when it isn't already playing, and moved `Stop()` to execute only when the thrust key is released.
+
+---
+
+### Rocket engine sound continued after a collision
+
+**Issue**
+
+After the rocket crashed or reached the landing platform, the engine sound continued playing.
+
+**Cause**
+
+The movement input was disabled, but the currently playing engine audio was not stopped.
+
+**Solution**
+
+I stopped the engine audio before playing the crash or success sound effect:
+
+```csharp
+audioSource.Stop();
+```
+
+---
+
+### Scene transition happened too quickly after a collision
+
+**Issue**
+
+The level reloaded or changed immediately after a crash or successful landing, making the sound and particle effects difficult to notice.
+
+**Cause**
+
+The scene transition happened as soon as the collision sequence started.
+
+**Solution**
+
+I used `Invoke()` with a configurable delay:
+
+```csharp
+Invoke(nameof(ReloadLevel), levelLoadDelay);
+```
+
+and:
+
+```csharp
+Invoke(nameof(LoadNextLevel), levelLoadDelay);
+```
+
+This gives the sound and particle effects time to play before the scene changes.
+
+---
+
+### Prefab changes were not appearing in other scenes
+
+**Issue**
+
+Changes made to the rocket in one scene were not appearing in the other levels.
+
+**Cause**
+
+The modifications had only been made to the prefab instance in the current scene.
+
+**Solution**
+
+I applied the instance changes to the original prefab, updating all prefab instances across the project.
+
+This helped me understand the difference between editing a prefab instance and applying those changes to the original prefab asset.
+
+---
+
+## Current Game Structure
+
+The game currently contains three playable levels.
+
+The player must guide the rocket from the starting platform to the landing platform while avoiding obstacles.
+
+- Crashing reloads the current level.
+- Landing successfully loads the next level.
+- Completing the final level returns the player to the first scene.
+
+The scene flow is controlled using each scene's `buildIndex`.
+
+```csharp
+int currentScene = SceneManager.GetActiveScene().buildIndex;
+int nextScene = currentScene + 1;
+```
+
+If the calculated next scene reaches the total number of scenes included in the Build Settings, the game returns to scene `0`.
+
+```csharp
+if (nextScene == SceneManager.sceneCountInBuildSettings)
+{
+    nextScene = 0;
+}
+```
+
+This creates a complete level loop and allows the player to restart from the first level after completing the game.
+
+---
+
