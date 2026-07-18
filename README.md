@@ -107,7 +107,7 @@ I learned how to:
 
 **Issue**
 
-While holding the thrust key, the engine sound kept starting and stopping every frame.
+While holding the thrust key, the engine sound kept starting and stopping repeatedly.
 
 **Cause**
 
