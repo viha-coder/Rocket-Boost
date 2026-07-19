@@ -15,6 +15,9 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 - Added configurable delays before reloading the current level or loading the next one.
 - Implemented automatic scene progression using the current scene's build index.
 - Added logic to return to the first level after completing the final level.
+- Added debug keys to speed up testing during development.
+- Added thrust particle effects while the rocket engine is active.
+- Added rotation particle effects while rotating left or right.
 
 ### Code Organization
 
@@ -29,77 +32,82 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 
 ---
 
-## Things I've Learned
+# Things I've Learned
 
-### New Unity Input System
+## Input System
 
-- Learned to use Unity's new Input System package instead of the old `Input.GetAxis()` approach.
-- Created a `Movement` script using `InputAction` fields for thrust (button-style, read with `.IsPressed()`) and rotation (axis-style, read with `.ReadValue<float>()`).
-- Learned to call `.Enable()` on each `InputAction` inside `OnEnable()`, so input starts working as soon as the object becomes active.
-
-### Tuning Variables and Physics Updates
-
-- Added `[SerializeField]` tuning variables (`thrustForce` and `rotationForce`) to adjust gameplay values directly in the Inspector instead of hardcoding numbers.
-- Handled thrust and rotation inside `FixedUpdate()` so that movement stays synchronized with Unity's physics updates.
-- Multiplied the direct rotation amount by `Time.fixedDeltaTime` so that `rotationForce` represents rotation speed over time.
-- Applied thrust through `Rigidbody.AddRelativeForce()`.
-
-### Combining `transform.Rotate()` with `Rigidbody`
-
-- Used `transform.Rotate()` to provide direct and responsive control over the rocket's orientation on the Z axis.
-- Used `Rigidbody.AddRelativeForce()` for physics-based thrust.
-- This was a gameplay-oriented choice for the project: rotation is controlled directly, while thrust, gravity, and collisions are handled through the Rigidbody.
-
-### Prefabs and Prefab Instances
-
-- Learned the difference between a prefab asset and a prefab instance.
-- Learned how applying instance overrides to the original prefab updates its other instances across the project.
-
-### Physics
-
-- Configured the Rigidbody's **Linear Damping** to control the rocket's deceleration.
-- Adjusted Unity's default gravity from **-9.81** to **-4** to better fit the game's physics and improve the overall gameplay feel.
-
-### Audio
-
-- Learned how to use the `AudioSource` component.
-- Controlled the rocket's engine sound through code.
-- Used `audioSource.isPlaying` to avoid restarting an audio clip that is already playing.
-- Used `AudioSource.PlayOneShot()` to play crash and success sound effects.
-  
-### Tools
-
-- Learned how to use **OBS Studio** to record gameplay footage for GitHub documentation and LinkedIn posts.
-
-### Collision Handling
-
-- Learned how to use `OnCollisionEnter()` to detect collisions and respond according to the collided object's tag.
-- Used a `switch` statement to organize the collision logic:
-  - `Friendly` allows the rocket to continue;
-  - `Finish` starts the success sequence;
-  - any other tag starts the crash sequence.
-
-### Scene Management
-
-I learned how to:
-
-- get the current scene using `SceneManager.GetActiveScene()`;
-- access the scene's `buildIndex`;
-- calculate the next scene;
-- reload the current scene;
-- return to the first level after completing the final level.
-
-### Particle Systems
-
-- Learned how to trigger separate particle systems through code for:
-  - successful landings;
-  - crashes.
-
-### Delayed Method Calls
-
-- Learned how to use `Invoke()` to schedule a method call after a configurable delay.
+- Learned to use Unity's new Input System instead of `Input.GetAxis()`.
+- Created `InputAction` fields for thrust and rotation.
+- Enabled input actions inside `OnEnable()`.
+- Read button input using `.IsPressed()`.
+- Read axis input using `.ReadValue<float>()`.
 
 ---
+
+## Physics
+
+- Used `Rigidbody.AddRelativeForce()` for thrust.
+- Used `transform.Rotate()` for direct rotation.
+- Learned the difference between movement and rotation.
+- Configured `Linear Damping`.
+- Adjusted Unity's gravity.
+
+---
+
+## Particle Systems
+
+- Added thrust particles.
+- Added left rotation particles.
+- Added right rotation particles.
+- Added crash particles.
+- Added success particles.
+- Controlled particle systems through code using `Play()` and `Stop()`.
+
+---
+
+## Audio
+
+- Learned how to use `AudioSource`.
+- Used `PlayOneShot()` for collision sounds.
+- Prevented engine audio from restarting repeatedly.
+- Stopped engine audio before collision sounds.
+
+---
+
+## Collision Handling
+
+- Used `OnCollisionEnter()`.
+- Learned how to use `switch`.
+- Separated collision logic into multiple methods.
+- Used a boolean flag to avoid multiple collision events.
+
+---
+
+## Scene Management
+
+- Loaded the next level.
+- Reloaded the current level.
+- Used `SceneManager.GetActiveScene()`.
+- Used `buildIndex`.
+- Returned to the first level after the final level.
+- Delayed scene transitions with `Invoke()`.
+
+---
+
+## Prefabs
+
+- Learned the difference between prefab assets and prefab instances.
+- Applied instance overrides to the original prefab.
+- Understood how prefab changes propagate across scenes.
+
+---
+
+## Debug Tools
+
+- Added debug keyboard shortcuts.
+- Learned how to speed up testing during development.
+- Created a shortcut to load the next level.
+- Created a shortcut to toggle collision detection.
 
 ## Problems Solved
 
