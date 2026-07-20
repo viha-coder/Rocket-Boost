@@ -2,7 +2,7 @@
 
 My second Unity project, built with C# — a rocket-landing game focused on thrust, rotation, and physics-based movement.
 
-## Development Update — July 17, 2026
+## Development Update — July 20, 2026
 
 In this stage of the project, I expanded the game by adding new levels, visual effects, sound effects, scene transitions, and improved collision handling.
 
@@ -18,6 +18,9 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 - Added debug keys to speed up testing during development.
 - Added thrust particle effects while the rocket engine is active.
 - Added rotation particle effects while rotating left or right.
+- Designed the first level using modular environment assets.
+- Added post-processing effects to improve the scene's visual quality.
+- Built a cave environment to guide the player's path naturally.
 
 ### Code Organization
 
@@ -108,6 +111,23 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 - Learned how to speed up testing during development.
 - Created a shortcut to load the next level.
 - Created a shortcut to toggle collision detection.
+
+---
+
+## Level Design
+
+- Built the first playable level using modular assets.
+- Learned how to compose an environment by combining rocks, buildings and obstacles.
+- Used the environment to naturally guide the player's path.
+- Improved the level's visual composition without affecting gameplay.
+
+---
+
+## Post Processing
+
+- Learned how to use Unity's Post Processing.
+- Improved the overall lighting and atmosphere of the level.
+- Understood how post-processing can enhance the game's visual presentation without changing gameplay mechanics.
 
 ## Problems Solved
 
