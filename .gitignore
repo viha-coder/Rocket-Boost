@@ -18,3 +18,11 @@
 *.pdb
 *.opendb
 *.IDB
+*.exe
+*.zip
+
+.vs/
+
+.idea/
+
+.history/

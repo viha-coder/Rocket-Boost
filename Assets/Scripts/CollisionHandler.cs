@@ -21,24 +21,6 @@ public class CollisionHandler : MonoBehaviour
       audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
-    {
-        RespondToDebugKeys();
-    }
-
-    private void RespondToDebugKeys()
-    {
-        if (Keyboard.current.lKey.isPressed)
-        {
-            LoadNextLevel();
-        }
-        if (Keyboard.current.cKey.wasPressedThisFrame)
-        {
-            isCollidable = !isCollidable;
-        }
-
-    }
-
     private void OnCollisionEnter(Collision other)
     {
         if (!isControllable || !isCollidable) { return; }
