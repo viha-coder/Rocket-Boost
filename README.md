@@ -1,10 +1,18 @@
 # Rocket Boost
 
-My second Unity project, built with C# — a rocket-landing game focused on thrust, rotation, and physics-based movement.
+My second Unity project, built with C#. In this game, the player controls a rocket and must safely land on different platforms while avoiding obstacles.
 
-## Development Update — July 20, 2026
+## Play the Game
 
-In this stage of the project, I expanded the game by adding new levels, visual effects, sound effects, scene transitions, and improved collision handling.
+- WebGL: https://play.unity.com/en/games/abc918bf-4f8b-4e0e-bf17-9a827b107f0e/webgl
+
+- Windows Build:
+
+## Final Development Update — July 2026
+
+This project is now complete.
+
+During development, I expanded the project by adding new levels, particle effects, sound effects, scene transitions, post-processing, and improving the overall game structure.
 
 ### New Features
 
@@ -21,6 +29,8 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 - Designed the first level using modular environment assets.
 - Added post-processing effects to improve the scene's visual quality.
 - Built a cave environment to guide the player's path naturally.
+- Added oscillating obstacles to create moving hazards across the level.
+- Implemented a Quit Application shortcut for standalone builds.
 
 ### Code Organization
 
@@ -32,6 +42,8 @@ In this stage of the project, I expanded the game by adding new levels, visual e
   - reloading the current level.
 - Used a boolean variable to prevent the collision logic from running multiple times.
 - Kept `OnCollisionEnter()` focused on selecting the correct sequence, while separate methods handle movement, effects, and scene transitions.
+- I also refactored the collision flow to keep each method responsible for a single task, making the code easier to maintain and extend.
+- Created reusable components, such as the Oscillating script, allowing different objects to share the same movement behaviour with configurable values through the Inspector.
 
 ---
 
@@ -57,14 +69,14 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 
 ---
 
-## Particle Systems
+Particle Systems
 
-- Added thrust particles.
-- Added left rotation particles.
-- Added right rotation particles.
-- Added crash particles.
-- Added success particles.
-- Controlled particle systems through code using `Play()` and `Stop()`.
+Learned how to:
+
+- create Particle Systems
+- trigger them through code
+- start and stop effects using `Play()` and `Stop()`
+- use different effects for thrust, success and explosions
 
 ---
 
@@ -128,6 +140,17 @@ In this stage of the project, I expanded the game by adding new levels, visual e
 - Learned how to use Unity's Post Processing.
 - Improved the overall lighting and atmosphere of the level.
 - Understood how post-processing can enhance the game's visual presentation without changing gameplay mechanics.
+
+## Gameplay
+
+- Implemented moving obstacles using an Oscillating script.
+- Learned how to create reusable movement behaviour by exposing variables in the Inspector.
+- Used oscillating objects to make levels more dynamic and challenging.
+
+## Application Management
+
+- Learned how to use Application.Quit() to close standalone builds.
+- Used Debug.Log() to verify that the quit input was being detected while testing in the Unity Editor.
 
 ## Problems Solved
 
@@ -211,17 +234,33 @@ I applied the instance changes to the original prefab, updating all prefab insta
 
 This helped me understand the difference between editing a prefab instance and applying those changes to the original prefab asset.
 
+### Issue
+
+The WebGL build suddenly started failing after previously working correctly.
+
+### Cause
+
+The project itself was not the issue. The problem happened during the WebGL build process.
+
+### Solution
+
+After cleaning the build environment and rebuilding the project, the WebGL version was successfully generated again.
+
+Both Windows and WebGL builds are now available.
+
 ---
 
 ## Current Game Structure
 
-The game currently contains three playable levels.
+The game currently contains three playable levels with increasing difficulty.
 
-The player must guide the rocket from the starting platform to the landing platform while avoiding obstacles.
+Players control a rocket using thrust and rotation while avoiding static and moving obstacles.
 
 - Crashing reloads the current level.
 - Landing successfully loads the next level.
 - Completing the final level returns the player to the first level.
+
+Moving obstacles use a reusable Oscillating component, making the levels more dynamic without requiring custom movement code for each object.
 
 The scene flow is controlled using each scene's `buildIndex`.
 
