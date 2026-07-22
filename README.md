@@ -4,9 +4,7 @@ My second Unity project, built with C#. In this game, the player controls a rock
 
 ## Gameplay
 
-<p align="center">
-  <img src="images/gameplay.gif" alt="Rocket Boost Gameplay" width="600"/>
-</p>
+![Rocket Boost Gameplay](Images/gameplay.gif)
 
 ## Play the Game
 
