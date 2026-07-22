@@ -960,7 +960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2754038774987753158, guid: 08928e48c62992649901b03c560c746a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.343431
+      value: 4.383431
       objectReference: {fileID: 0}
     - target: {fileID: 2754038774987753158, guid: 08928e48c62992649901b03c560c746a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1544,6 +1544,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 721356888}
     m_Modifications:
+    - target: {fileID: 6666274806793920464, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7265775707275618473, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
       propertyPath: m_Name
       value: Dropship_03_Handle (2)
@@ -1645,6 +1649,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 721356888}
     m_Modifications:
+    - target: {fileID: 6666274806793920464, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7265775707275618473, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
       propertyPath: m_Name
       value: Dropship_03_Handle (1)
@@ -2063,6 +2071,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 721356888}
     m_Modifications:
+    - target: {fileID: 6666274806793920464, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7265775707275618473, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
       propertyPath: m_Name
       value: Dropship_03_Handle
@@ -2283,6 +2295,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 721356888}
     m_Modifications:
+    - target: {fileID: 6666274806793920464, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7265775707275618473, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
       propertyPath: m_Name
       value: Dropship_03_Handle (4)
@@ -2393,21 +2409,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 721356888}
     m_Modifications:
+    - target: {fileID: 6666274806793920464, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7265775707275618473, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
       propertyPath: m_Name
       value: Dropship_03_Handle (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8043121268987474451, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 21.553185
-      objectReference: {fileID: 0}
-    - target: {fileID: 8043121268987474451, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 21.553185
-      objectReference: {fileID: 0}
-    - target: {fileID: 8043121268987474451, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 21.553183
       objectReference: {fileID: 0}
     - target: {fileID: 8043121268987474451, guid: c92d874d96335d54eaf2a5662e70480e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3069,7 +3077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4318335010004900556, guid: f1176da1aeb975944bb27221ab644467, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.343431
+      value: 4.383431
       objectReference: {fileID: 0}
     - target: {fileID: 4318335010004900556, guid: f1176da1aeb975944bb27221ab644467, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3134,7 +3142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4712314584141947170, guid: eb318e8d4e4487d459a809bc318eff91, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.76
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4712314584141947170, guid: eb318e8d4e4487d459a809bc318eff91, type: 3}
       propertyPath: m_LocalPosition.z

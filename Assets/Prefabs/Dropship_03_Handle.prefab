@@ -10,55 +10,55 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalScale.x
-      value: 12.004
+      value: 21.553185
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalScale.y
-      value: 12.004
+      value: 21.553185
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalScale.z
-      value: 12.004
+      value: 21.553183
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.01902
+      value: 32.18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.9
+      value: 14.03
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.469681
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.49112457
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.4625549
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.4895054
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.552471
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -84.395
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 18.061
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -113.128
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       propertyPath: m_Name
@@ -70,15 +70,15 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5601359839086888554}
+      addedObject: {fileID: 6666274806793920464}
   m_SourcePrefab: {fileID: 100100000, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
 --- !u!1 &7265775707275618473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
   m_PrefabInstance: {fileID: 7499708698380359160}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &5601359839086888554
-BoxCollider:
+--- !u!64 &6666274806793920464
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,6 +95,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.11651039, y: 0.6087164, z: 0.28076267}
-  m_Center: {x: -0.0000006482005, y: -0.0014843941, z: 0.016404286}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 731366883480653226, guid: 302ae5206abe48c49bd78d257f14b145, type: 3}
