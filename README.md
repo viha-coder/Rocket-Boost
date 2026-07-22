@@ -73,7 +73,7 @@ During development, I expanded the project by adding new levels, particle effect
 
 ---
 
-Particle Systems
+##Particle Systems
 
 Learned how to:
 
@@ -243,6 +243,10 @@ The modifications had only been made to the prefab instance in the current scene
 I applied the instance changes to the original prefab, updating all prefab instances across the project.
 
 This helped me understand the difference between editing a prefab instance and applying those changes to the original prefab asset.
+
+---
+
+### WebGL Build Failure
 
 ### Issue
 
