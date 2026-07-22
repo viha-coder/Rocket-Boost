@@ -8,13 +8,13 @@ My second Unity project, built with C#. In this game, the player controls a rock
 
 ## Play the Game
 
-- WebGL: https://play.unity.com/en/games/abc918bf-4f8b-4e0e-bf17-9a827b107f0e/webgl
+- Play in your browser (WebGL): https://play.unity.com/en/games/abc918bf-4f8b-4e0e-bf17-9a827b107f0e/webgl
 
-- Windows Build: https://github.com/viha-coder/Rocket-Boost/releases/tag/V1.1
+- Download the Windows Version: https://github.com/viha-coder/Rocket-Boost/releases/tag/V1.1
 
 ## Final Development Update — July 2026
 
-This project is now complete.
+This project is the final version of Rocket Boost.
 
 During development, I expanded the project by adding new levels, particle effects, sound effects, scene transitions, post-processing, and improving the overall game structure.
 
@@ -145,16 +145,22 @@ Learned how to:
 - Improved the overall lighting and atmosphere of the level.
 - Understood how post-processing can enhance the game's visual presentation without changing gameplay mechanics.
 
+---
+
 ## Gameplay
 
 - Implemented moving obstacles using an Oscillating script.
 - Learned how to create reusable movement behaviour by exposing variables in the Inspector.
 - Used oscillating objects to make levels more dynamic and challenging.
 
+---
+
 ## Application Management
 
 - Learned how to use Application.Quit() to close standalone builds.
 - Used Debug.Log() to verify that the quit input was being detected while testing in the Unity Editor.
+
+---
 
 ## Problems Solved
 
