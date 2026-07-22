@@ -2,11 +2,17 @@
 
 My second Unity project, built with C#. In this game, the player controls a rocket and must safely land on different platforms while avoiding obstacles.
 
+## Gameplay
+
+<p align="center">
+  <img src="images/gameplay.gif" alt="Rocket Boost Gameplay" width="600"/>
+</p>
+
 ## Play the Game
 
 - WebGL: https://play.unity.com/en/games/abc918bf-4f8b-4e0e-bf17-9a827b107f0e/webgl
 
-- Windows Build:
+- Windows Build: https://github.com/viha-coder/Rocket-Boost/releases/tag/V1.1
 
 ## Final Development Update — July 2026
 
